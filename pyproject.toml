@@ -1,0 +1,71 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "RAG-pdf"
+version = "0.0.1"
+description = ""
+readme = "README.md"
+authors = [
+  { name = "SN", email = "6432132+samnoyes@users.noreply.github.com" },
+]
+requires-python = ">=3.11,<3.14"
+packages = [{ include = "backend" }]
+dependencies = [
+  "langchain",
+  "langsmith",
+  "langchain-google-genai",
+  "langchain-core",
+  "langchain-community",
+  "langchain-openai",
+  "langchain-anthropic",
+  "langchain-weaviate",
+  "langgraph",
+  "beautifulsoup4",
+  "weaviate-client",
+  "lxml",
+  "voyageai",
+  "pillow",
+  "psycopg2-binary",
+  "langchain_huggingface",
+  "pypdf",
+  "langchain_groq",
+  "langchain_cohere",
+  "langchain_elasticsearch",
+  "langchain_pinecone",
+  "langchain_mongodb",
+  "sentence-transformers",
+  "pyjwt",
+  "passlib",
+  "pydantic",
+  "sqlalchemy",
+  "pydantic-settings",
+  "databases",
+  "python-dotenv",
+  "psutil",
+  "alembic",
+  "asyncpg",
+  "pydantic[email]",
+  "python-multipart",
+  "bcrypt",
+  "faiss-cpu",
+  "chorama",
+]
+
+[dependency-groups]
+dev = [
+  "langgraph-sdk",
+  "pytest",
+  "ruff",
+  "pandas",
+]
+
+[tool.uv]
+default-groups = ["dev"]
+
+[tool.hatch.build]
+exclude = ["tests/"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["backend"]

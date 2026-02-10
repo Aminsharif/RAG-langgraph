@@ -1,0 +1,44 @@
+services:
+    langgraph-redis:
+        image: redis:7-alpine
+        healthcheck:
+            test: redis-cli ping
+            interval: 5s
+            timeout: 1s
+            retries: 5
+        ports:
+            - "6379:6379"
+    
+    langgraph-postgres:
+        image: postgres:18-alpine
+        ports:
+            - "5433:5432"
+        environment:
+            POSTGRES_DB: langgraphrag
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: "123456"
+        volumes:
+            - langgraph-data:/var/lib/postgresql/data
+        healthcheck:
+            test: pg_isready -U postgres
+            start_period: 10s
+            timeout: 1s
+            retries: 5
+            interval: 5s
+    
+    langgraph-api:
+        build: .  # Add this line to build from current directory
+        # image: "langgraph-image"  # Remove or comment this line if building locally
+        ports:
+            - "8123:8000"
+        depends_on:
+            langgraph-redis:
+                condition: service_healthy
+            langgraph-postgres:
+                condition: service_healthy
+        
+
+volumes:
+    langgraph-data:
+        driver: local
+    postgres_data: {}
