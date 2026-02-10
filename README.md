@@ -174,18 +174,4 @@ python manage_db.py -h
 - **Input Validation:** Rigorously validate all user input to protect against common security vulnerabilities like SQL injection and cross-site scripting (XSS).
 - **Least Privilege:** Adhere to the principle of least privilege by granting users only the permissions necessary for their roles.
 
-## Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository.
-2. Create a new feature branch (`git checkout -b feature/your-feature`).
-3. Commit your changes (`git commit -m 'Add some feature'`).
-4. Push to the branch (`git push origin feature/your-feature`).
-5. Create a new pull request.
-
-
-## License
-
-This project is licensed under the  License – see the [LICENSE.md](LICENSE.md) file for details.
 
